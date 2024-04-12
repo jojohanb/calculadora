@@ -86,7 +86,12 @@ function limpaVariaveis(calculadora) {
 function adicionaNumero(calculadora, numero) {
   calculadora.operandoAtual = calculadora.operandoAtual + numero;
   atualizaDisplay(calculadora);
-}
+
+   if (numero === "." && calculadora.operandoAtual.includes(".")) {
+    return; //nao sei pq nao funciona
+  }
+} 
+
 
 /* Função chamada quando um botão de operador é pressionado
  * Essa função tem comportamentos diferentes dependendo do estado da calculadora.
@@ -102,6 +107,12 @@ function escolheOperador(calculadora, operador) {
   calculadora.operandoAtual = ""
   calculadora.operador = operador
   atualizaDisplay(calculadora)
+//nao sei pq nao funciona
+  if (calculadora.operador) {
+    calculadora.operador = operador;
+    atualizaDisplay(calculadora);
+    return;
+  }
 }
 /* A função recebe o objeto calculadora e executa o calculo
  * - Verificar a operação a ser   apagaDigito(calculadora)
