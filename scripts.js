@@ -84,13 +84,12 @@ function limpaVariaveis(calculadora) {
  * O dígito "." deve receber um tratamento especial
  */
 function adicionaNumero(calculadora, numero) {
+
+  if (numero === "." && calculadora.operandoAtual.includes(".")) {
+    return}
   calculadora.operandoAtual = calculadora.operandoAtual + numero;
   atualizaDisplay(calculadora);
-
-   if (numero === "." && calculadora.operandoAtual.includes(".")) {
-    return; //nao sei pq nao funciona
   }
-} 
 
 
 /* Função chamada quando um botão de operador é pressionado
@@ -102,17 +101,17 @@ function adicionaNumero(calculadora, numero) {
  * - copiar operandoAtual para o operandoAnterior, deixando a calculadora preparada para receber o próximo número
  */
 function escolheOperador(calculadora, operador) {
+  if (calculadora.operandoAtual =="") return 
+  if (calculadora.operador.includes(operador)) {
+  return}
+
+
+
   calculadora.operandoAnterior = calculadora.operandoAtual
 
   calculadora.operandoAtual = ""
   calculadora.operador = operador
   atualizaDisplay(calculadora)
-//nao sei pq nao funciona
-  if (calculadora.operador) {
-    calculadora.operador = operador;
-    atualizaDisplay(calculadora);
-    return;
-  }
 }
 /* A função recebe o objeto calculadora e executa o calculo
  * - Verificar a operação a ser   apagaDigito(calculadora)
